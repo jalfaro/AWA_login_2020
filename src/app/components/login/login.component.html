@@ -1,0 +1,24 @@
+<mat-grid-list cols=3 rowHeight="30%">
+  <mat-grid-tile rowspan="1" colspan="3"></mat-grid-tile>
+  <mat-grid-tile rowspan="1" colspan="1"></mat-grid-tile>
+  <mat-grid-tile rowspan="1" colspan="1">
+    <form [formGroup]="formGroup">
+      <mat-form-field class="input-class">
+        <mat-label>Usuario</mat-label>
+        <input type="email" matInput formControlName="user">
+        <mat-icon matPrefix>perm_identity</mat-icon>
+      </mat-form-field>
+      <mat-form-field class="input-class">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput formControlName="password">
+        <mat-icon matPrefix>vpn_key</mat-icon>
+      </mat-form-field>
+      <div class="input-class">
+        <button mat-raised-button color="primary" class="button-class" (click) = "login()">Login</button>
+        <button mat-raised-button color="primary" class="button-class" (click) = "goToRegister()">Register</button>
+      </div>
+    </form>
+  </mat-grid-tile>
+  <mat-grid-tile rowspan="1" colspan="1"></mat-grid-tile>
+  <mat-grid-tile rowspan="1" colspan="3"></mat-grid-tile>
+</mat-grid-list>
