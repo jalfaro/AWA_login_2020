@@ -1,6 +1,6 @@
 import { AuthService } from './../../service/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import CryptoJS from 'crypto-js';
 import { Router } from '@angular/router';
 
@@ -15,9 +15,9 @@ export class RegistroComponent implements OnInit {
 
   ngOnInit(): void {
     this.formGroup = this.fb.group({
-        nombre : [''],
-        email: [''],
-        password: ['']
+        nombre : ['', Validators.required],
+        email: ['', [Validators.required, Validators.minLength(10), Validators.email]],
+        password: ['', Validators.required]
     });
   }
 
@@ -34,9 +34,13 @@ export class RegistroComponent implements OnInit {
 
     params.password = CryptoJS.SHA1(params.password).toString();
     console.log(params.password);
-    this.auth.register(params).subscribe( data => {
-      if (data.status = 1) this.router.navigateByUrl('/login');
-      else  alert("Error al ejecutarlo");
-    });
+    if (this.formGroup.valid) {
+      this.auth.register(params).subscribe( data => {
+        if (data.status = 1) this.router.navigateByUrl('/login');
+        else  alert("Error al ejecutarlo");
+      });
+    } else {
+      alert("Debe de ingresar correctamente lo datos");
+    }
   }
 }

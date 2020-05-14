@@ -18,13 +18,15 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { MatInputModule} from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CotenidoComponent } from './components/cotenido/cotenido.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     LoginComponent,
-    RegistroComponent
+    RegistroComponent,
+    CotenidoComponent
   ],
   imports: [
     BrowserModule,

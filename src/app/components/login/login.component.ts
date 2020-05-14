@@ -35,7 +35,11 @@ export class LoginComponent implements OnInit {
     params.password = CryptoJS.SHA1(params.password).toString();
     console.log(params.password);
     this.auth.login(params).subscribe( data => {
-      if (data.status === 1) alert("Exitoso");
+      if (data.status === 1) {
+        alert("Exitoso");
+        this.auth.guardarSenal();
+        this.router.navigateByUrl('/contenido');
+      }
       else  alert("Fallido");
     });
   }
